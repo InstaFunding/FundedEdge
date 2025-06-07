@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funded Edge - Loading</title>
+    <style>
+        /* Center the logo and add animation */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000; /* Black background */
+            font-family: 'Montserrat', sans-serif;
+            color: #fff; /* White text for contrast */
+        }
+
+        .logo-container {
+            text-align: center;
+        }
+
+        /* Breathing animation for the logo */
+        .logo {
+            width: 150px;
+            height: 150px;
+            animation: breathing 2s infinite ease-in-out;
+        }
+
+        /* Loading text */
+        .loading-text {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #fff; /* White text */
+        }
+
+        /* Moving loading circle */
+        .loading-circle {
+            margin: 20px auto;
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3); /* Light border */
+            border-top: 5px solid #fff; /* White border for the moving part */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Breathing animation keyframes */
+        @keyframes breathing {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Spinning animation keyframes */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive styles for mobile */
+        @media screen and (max-width: 768px) {
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .loading-circle {
+                width: 40px;
+                height: 40px;
+                border-width: 4px;
+            }
+
+            .loading-text {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .loading-circle {
+                width: 30px;
+                height: 30px;
+                border-width: 3px;
+            }
+
+            .loading-text {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="ian_s_application/assets/images/Funded edge logo.png" alt="Funded Edge Logo" class="logo">
+        <div class="loading-circle"></div>
+        <p class="loading-text">Loading...</p>
+    </div>
+
+    <script>
+        // Redirect to Funded Edge Final.html after 3 seconds
+        setTimeout(() => {
+            window.location.href = "ian_s_application/pages/Funded Edge Final.html";
+        }, 3000); // 3000ms = 3 seconds
+    </script>
+</body>
+</html>
