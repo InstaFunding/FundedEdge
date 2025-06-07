@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funded Edge - Trading Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Alata&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+       <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="banner-content">
+            <span class="banner-icon">🎯</span>
+            <p>Funded Edge, Built for Traders Who Hate Restrictions</p>
+            <a href="#plansSection" class="banner-link">Learn More</a>
+        </div>
+    </div>
+
+        <!-- Navigation -->
+    <div class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-img">FE</div>
+                <span class="logo-text">Funded Edge</span>
+            </div>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#plansSection" class="cdf-button">
+                    <span class="cdf-icon">💰</span>
+                    <span>Plans</span>
+                </a>
+                <div class="dropdown" onclick="toggleDropdown(this)">
+                    <a href="#" class="nav-link">
+                        <span>About FE</span>
+                        <div class="dropdown-arrow"></div>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">📚</span>
+                            <span>Our Story</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">👥</span>
+                            <span>Team</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">💼</span>
+                            <span>Careers</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown" onclick="toggleDropdown(this)">
+                    <a href="#" class="nav-link">
+                        <span>FAQs</span>
+                        <div class="dropdown-arrow"></div>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">❓</span>
+                            <span>General</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">👤</span>
+                            <span>Account</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">📊</span>
+                            <span>Trading</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">💳</span>
+                            <span>Payments</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown" onclick="toggleDropdown(this)">
+                    <a href="#" class="nav-link">
+                        <span>More</span>
+                        <div class="dropdown-arrow"></div>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">📝</span>
+                            <span>Blog</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">📚</span>
+                            <span>Resources</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">🛟</span>
+                            <span>Support</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown" onclick="toggleDropdown(this)">
+                    <a href="#" class="nav-link">
+                        <span>EN</span>
+                        <div class="dropdown-arrow"></div>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">🇬🇧</span>
+                            <span>English</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">🇪🇸</span>
+                            <span>Spanish</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">🇫🇷</span>
+                            <span>French</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">🇩🇪</span>
+                            <span>German</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-actions">
+                    <div class="login-button">
+                        <span class="login-icon">👤</span>
+                        <button id="loginButton">Login / Sign Up</button>
+                    </div>
+                    <div class="theme-toggle" onclick="toggleTheme()">
+                        <img src="#" alt="Theme Toggle" id="themeIcon">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h2 class="hero-title">Highest drawdowns. Lowest fees. No challenges. Just capital</h2>
+            <h1 class="hero-subtitle">Trade with an Edge. Get Funded Instantly.</h1>
+            <div class="hero-buttons">
+                <button class="primary-button" id="getFundedBtn">Get Funded Now</button>
+                <button class="secondary-button" id="compareAccountsBtn">Compare Accounts</button>
+            </div>
+            <div class="rating-container">
+                <p class="rating-text">With a 4.5 star rating</p>
+                <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+                <p class="rating-text">Give it a try today</p>
+            </div>
+        </div>
+
+        <!-- Combined Stats and Awards Section -->
+        <div class="stats-container">
+            <div class="stats-wrapper">
+                <div class="stats-section">
+                    <!-- Stat 1 -->
+                    <div class="stat-item">
+                        <span class="stat-number">70k+</span>
+                        <div class="stat-label">Instantly Funded<br>Accounts</div>
+                    </div>
+                    
+                    <!-- Stat 2 -->
+                    <div class="stat-item">
+                        <span class="stat-number">25k+</span>
+                        <div class="stat-label">Active Global<br>Traders</div>
+                    </div>
+                    
+                    <!-- Stat 3 -->
+                    <div class="stat-item">
+                        <span class="stat-number">$82M+</span>
+                        <div class="stat-label">Profits Withdrawn</div>
+                    </div>
+                </div>
+                
+                <!-- Divider -->
+                <div class="divider"></div>
+                
+                <div class="awards-section">
+                    <!-- Award 1 -->
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <img src="../assets/images/laurel-left.png" alt="Award Laurel Left">
+                        </div>
+                        <div class="award-content">
+                            <div class="award-title">Most Trader-Friendly Conditions</div>
+                            <div class="award-subtitle">(Prop Awards – 2025)</div>
+                        </div>
+                        <div class="award-icon">
+                            <img src="../assets/images/laurel-right.png" alt="Award Laurel Right">
+                        </div>
+                    </div>
+                    
+                    <!-- Award 2 -->
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <img src="../assets/images/laurel-left.png" alt="Award Laurel Left">
+                        </div>
+                        <div class="award-content">
+                            <div class="award-title">Fastest Account Activation</div>
+                            <div class="award-subtitle">(FX Growth Awards –<br>2025)</div>
+                        </div>
+                        <div class="award-icon">
+                            <img src="../assets/images/laurel-right.png" alt="Award Laurel Right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insights Section -->
+        <div class="insights-section">
+            <h2 class="insights-title">Key Insights<br>of FundedEdge</h2>
+            <div class="insights-container">
+                <div class="insights-list"><p>And we offer More :</p><p>Global Access<br>Growth Scaling<br>No Monthly Fees<br>No recurring costs<br>Pay once, get funded.</p></div>
+                <div class="insights-grid">
+                    <div class="insight-card"><h3 class="insight-title">Instant Funding</h3><p class="insight-description">No Challenge, No Time Wasted Skip the evaluation and start trading immediately with real capital.</p></div>
+                    <div class="insight-card"><h3 class="insight-title">Drawdown up to 25%</h3><p class="insight-description">Industry Leading Trade with more freedom and flexibility than any other prop firm offers.</p></div>
+                    <div class="insight-card"><h3 class="insight-title">Affordable Funding</h3><p class="insight-description">Scaled Pricing for Bigger Accounts Get up to $1M in capital at the most competitive rates</p></div>
+                    <div class="insight-card"><h3 class="insight-title">Same-Day Payouts</h3><p class="insight-description">Withdraw Profits in 24 Hours No delays, no stress — payouts processed fast and reliably</p></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Feature Cards Section -->
+        <div class="contai">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="../assets/images/img_untitled_design_1_1.png" alt="Growth Scaling Icon">
+                    </div>
+                    <h3 class="feature-title">Growth Scaling</h3>
+                    <p class="feature-description">
+                        Double Your Account Over Time<br>
+                        Perform well, and we'll scale your<br>
+                        capital up to $2M+
+                    </p>
+                    <div class="feature-highlight">
+                        AVG Spread of 2 months
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="../assets/images/img_vector.png" alt="Global Access Icon">
+                    </div>
+                    <h3 class="feature-title">Global Access</h3>
+                    <p class="feature-description">
+                        Trade from Anywhere<br>
+                        Our platform supports traders<br>
+                        worldwide — MT4, MT5, cTrader<br>
+                        compatible
+                    </p>
+                </div>
+            </div>
+            
+            <div class="main-feature">
+                <h2 class="main-feature-title">Best Trading Platforms, Built for Pros</h2>
+                <p class="main-feature-subtitle">Trade seamlessly on industry-leading platforms:</p>
+                
+                <div class="platform-list">
+                    <p><strong>MT4 • MT5 • cTrader • Match-Trader</strong></p>
+                    <p>Backed by our own MetaQuotes licenses and proprietary infrastructure, FundedEdge gives you:</p>
+                </div>
+                
+                <ol class="features-list">
+                    <li>Lightning-fast execution</li>
+                    <li>Bank-level security</li>
+                    <li>Slippage</li>
+                    <li>Deep liquidity</li>
+                </ol>
+                
+                <p class="tech-description">
+                    Our advanced in-house tech ensures every trade is powered by performance and trust.
+                </p>
+                
+                <div class="platform-icons">
+                    <div class="platform-icon">
+                        <img src="../assets/images/img_besttradingplatformslogos_0.png" alt="MT4 Platform">
+                    </div>
+                    <div class="platform-icon">
+                        <img src="../assets/images/img_besttradingplatformslogos_2.png" alt="MT5 Platform">
+                    </div>
+                    <div class="platform-icon">
+                        <img src="../assets/images/img_besttradingplatformslogos_3.png" alt="cTrader Platform">
+                    </div>
+                    <div class="platform-icon">
+                        <img src="../assets/images/img_besttradingplatformslogos_4.png" alt="Match Trader Platform">
+                    </div>
+                   
+                </div>
+                
+                <!-- Laptop image -->
+                <img src="../assets/images/img_tradingplatform_1.png" alt="Trading Platform Interface" class="laptop-image">
+            </div>
+        </div>
+
+        <!-- Payment Providers Section -->
+        <div class="payment-providers-container">
+            <div class="payment-providers">
+                <img src="../assets/images/img_paymentprovider1.png" alt="Payment Provider" class="provider-image">
+                <img src="../assets/images/img_paymentprovider2.png" alt="Payment Provider" class="provider-image">
+                <img src="../assets/images/img_paymentprovider6.png" alt="Payment Provider" class="provider-image">
+                <img src="../assets/images/img_paymentprovider11.png" alt="Payment Provider" class="provider-image">
+                <img src="../assets/images/img_paymentprovider14.png" alt="Payment Provider" class="provider-image">
+                <img src="../assets/images/img_paymentprovider17.png" alt="Payment Provider" class="provider-image">
+                 <!-- Duplicate for seamless scroll -->
+                 <img src="../assets/images/img_paymentprovider1.png" alt="Payment Provider" class="provider-image">
+                 <img src="../assets/images/img_paymentprovider2.png" alt="Payment Provider" class="provider-image">
+                 <img src="../assets/images/img_paymentprovider6.png" alt="Payment Provider" class="provider-image">
+                 <img src="../assets/images/img_paymentprovider11.png" alt="Payment Provider" class="provider-image">
+                 <img src="../assets/images/img_paymentprovider14.png" alt="Payment Provider" class="provider-image">
+                 <img src="../assets/images/img_paymentprovider17.png" alt="Payment Provider" class="provider-image">
+        </div>
+
+        <!-- NEW Plans Section (div-based) -->
+        <section id="plansSection" class="plans-section">
+            <img src="../assets/images/img_ellipse_1.png" alt="Background" class="ellipse-bg">
+            
+            <h2 class="plans-title">Available Plans</h2>
+            <p class="plans-subtitle">No Challenge. No Delay. Start trading right after verification.</p>
+            
+            <div class="plans-table">
+                <!-- Header Row -->
+                <div class="table-row table-header">
+                    <div class="table-cell-first">Plan</div>
+                    <div class="table-cell plan-name">Boost</div>
+                    <div class="table-cell plan-name">Prime</div>
+                    <div class="table-cell plan-name">Advanced</div>
+                    <div class="table-cell plan-name">Elite</div>
+                    <div class="table-cell plan-name">Pro</div>
+                    <div class="table-cell plan-name">Ultimate</div>
+                    <div class="table-cell plan-name">Executive</div>
+                    <div class="table-cell plan-name">Millionaire+</div>
+                </div>
+                
+                <!-- Capital Row -->
+                <div class="table-row highlight-row">
+                    <div class="table-cell-first">Capital<span class="table-subtext">Amount of capital pre loaded</span></div>
+                    <div class="table-cell plan-capital">$10,000</div>
+                    <div class="table-cell plan-capital">$25,000</div>
+                    <div class="table-cell plan-capital">$50,000</div>
+                    <div class="table-cell plan-capital">$100,000</div>
+                    <div class="table-cell plan-capital">$200,000</div>
+                    <div class="table-cell plan-capital">$300,000</div>
+                    <div class="table-cell plan-capital">$500,000</div>
+                    <div class="table-cell plan-capital">$1,000,000</div>
+                </div>
+
+            
+                <div class="table-row highlight-row">
+                    <div class="table-cell-first">Target Profit<span class="table-subtext">Target profit for first withdraw</span></div>
+                    <div class="table-cell plan-TP">10%</div>
+                    <div class="table-cell plan-TP">8%</div>
+                    <div class="table-cell plan-TP">8%</div>
+                    <div class="table-cell plan-TP">5%</div>
+                    <div class="table-cell plan-TP">4%</div>
+                    <div class="table-cell plan-TP">3%</div>
+                    <div class="table-cell plan-TP">2.5%</div>
+                    <div class="table-cell plan-TP">2%</div>
+                </div>
+
+
+                
+                 <!-- Daily Drawdown Row -->
+                 <div class="table-row highlight-row">
+                    <div class="table-cell-first">Daily Drawdown</div>
+                    <div class="table-cell">6%</div><div class="table-cell">6.5%</div><div class="table-cell">7%</div><div class="table-cell">8%</div>
+                    <div class="table-cell">9%</div><div class="table-cell">9.5%</div><div class="table-cell">10%</div><div class="table-cell">12%</div>
+                </div>
+                
+                <!-- Fee (USD) Row -->
+                <div class="table-row highlight-row">
+                    <div class="table-cell-first">Fee(USD)<span class="table-subtext">Money to be spent</span></div>
+                    <div class="table-cell plan-price">$199</div>
+                    <div class="table-cell plan-price">$299</div>
+                    <div class="table-cell plan-price">$449</div>
+                    <div class="table-cell plan-price">$649</div>
+                    <div class="table-cell plan-price">$999</div>
+                    <div class="table-cell plan-price">$1,299</div>
+                    <div class="table-cell plan-price">$1,899</div>
+                    <div class="table-cell plan-price">$3,499</div>
+                </div>
+                
+                <!-- Maximum Drawdown Row -->
+                <div class="table-row">
+                    <div class="table-cell-first">Maximum Drawdown</div>
+                    <div class="table-cell">12%</div><div class="table-cell">13%</div><div class="table-cell">15%</div><div class="table-cell">18%</div>
+                    <div class="table-cell">20%</div><div class="table-cell">21%</div><div class="table-cell">22%</div><div class="table-cell">25%</div>
+                </div>
+                
+                <!-- Profit split Row -->
+                <div class="table-row highlight-row">
+                    <div class="table-cell-first">Profit split</div>
+                    <div class="table-cell">85%</div><div class="table-cell">87%</div><div class="table-cell">88%</div><div class="table-cell">90%</div>
+                    <div class="table-cell">91%</div><div class="table-cell">92%</div><div class="table-cell">92%</div><div class="table-cell">94%</div>
+                </div>
+                
+                
+                <!-- Minimum trading days Row -->
+                <div class="table-row highlight-row">
+                    <div class="table-cell-first">Minimum trading days</div>
+                    <div class="table-cell">2 Days</div><div class="table-cell">2 Days</div><div class="table-cell">2 Days</div><div class="table-cell">2 Days</div>
+                    <div class="table-cell">2 Days</div><div class="table-cell">2 Days</div><div class="table-cell">2 Days</div><div class="table-cell">2 Days</div>
+                </div>
+                
+                <!-- First Withdraw Row -->
+                <div class="table-row">
+                    <div class="table-cell-first">First Withdraw<span class="table-subtext">Days to first withdraw</span></div>
+                    <div class="table-cell">14 Days</div><div class="table-cell">10 Days</div><div class="table-cell">7 Days</div><div class="table-cell">72 hours</div>
+                    <div class="table-cell">48 hours</div><div class="table-cell">24 hours</div><div class="table-cell">Instant</div><div class="table-cell">Instant</div>
+                </div>
+                
+            <!-- News trading Row -->
+            <div class="table-row">
+                <div class="table-cell-first">News trading<span class="table-subtext">Be able to trade with news</span></div>
+                <div class="table-cell"><img src="../assets/images/Trick.png" alt="Yes" class="check-icon"></div>
+                <div class="table-cell"><img src="../assets/images/Trick.png" alt="Yes" class="check-icon"></div>
+                <div class="table-cell"><img src="../assets/images/Trick.png" alt="Yes" class="check-icon"></div>
+                <div class="table-cell"><img src="../assets/images/Trick.png" alt="Yes" class="check-icon"></div>
+                <div class="table-cell"><img src="../assets/images/Trick.png" alt="Yes" class="check-icon"></div>
+                <div class="table-cell"><img src="../assets/images/Trick.png" alt="Yes" class="check-icon"></div>
+                <div class="table-cell"><img src="../assets/images/Trick.png" alt="Yes" class="check-icon"></div>
+                <div class="table-cell"><img src="../assets/images/Trick.png" alt="Yes" class="check-icon"></div>
+            </div>
+                
+                <!-- Get Funded Row -->
+                <div class="table-row">
+                    <div class="table-cell-first">Get Funded<span class="table-subtext">Start your trading journey</span></div>
+                    <div class="table-cell"><div class="start-button get-plan-button"><span>Get Plan</span></div></div>
+                    <div class="table-cell"><div class="start-button get-plan-button"><span>Get Plan</span></div></div>
+                    <div class="table-cell"><div class="start-button get-plan-button"><span>Get Plan</span></div></div>
+                    <div class="table-cell"><div class="start-button get-plan-button"><span>Get Plan</span></div></div>
+                    <div class="table-cell"><div class="start-button get-plan-button"><span>Get Plan</span></div></div>
+                    <div class="table-cell"><div class="start-button get-plan-button"><span>Get Plan</span></div></div>
+                    <div class="table-cell"><div class="start-button get-plan-button"><span>Get Plan</span></div></div>
+                    <div class="table-cell"><div class="start-button get-plan-button"><span>Get Plan</span></div></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Process Section -->
+        <div class="process-section">
+            <h2 class="process-title">Process explained in 3 steps</h2>
+            <div class="process-steps">
+                <div class="process-step"><div class="step-number">Step 1</div><img src="../assets/images/img_1_300x300.png" alt="Step 1" class="step-image"><p class="step-description">Sign up with us on our website</p></div>
+                <div class="process-step"><div class="step-number">Step 2</div><img src="../assets/images/img_2_300x300.png" alt="Step 2" class="step-image"><p class="step-description">Choose your a plan and Pay</p></div>
+                <div class="process-step"><div class="step-number">Step 3</div><img src="../assets/images/img_3_300x300.png" alt="Step 3" class="step-image"><p class="step-description">After verification get funded instantly</p></div>
+            </div>
+        </div>
+        
+        <!-- Experiment Section -->
+        <div class="experiment-section">
+             <h2 class="experiment-title">Giving you enough room<br>To experiment and try Again with out limits</h2>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="testimonials-section">
+            <h2 class="testimonials-title">What Others have to say</h2>
+            <p class="testimonials-subtitle">See what our clients have been able to achieve with our plans and how life changing it has ben for them.</p>
+            <p class="testimonials-rating">Our Reviews from verified customer purchases</p>
+            <p class="testimonials-rating">Excellent<br><br>Rated 4.6 / 5 based on <u>33,923 reviews</u> on Trust pilot</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><h3 class="testimonial-title">"Amazing Experience!"</h3><p class="testimonial-text">"I got funded within a week of passing my evaluation. The payout process is fast and smooth. Customer support is responsive and genuinely helpful!"</p><div class="testimonial-verified"><img src="../assets/images/img_instagram_verification_badge.png" alt="Verified" class="verified-badge"><span class="verified-text">Verified</span></div></div>
+                <div class="testimonial-card"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><h3 class="testimonial-title">"Top-notch prop firm"</h3><p class="testimonial-text">"I've tried a few funding firms and this one stands out. The rules are fair, and I like that they offer news trading and fast withdrawals."</p><div class="testimonial-verified"><img src="../assets/images/img_instagram_verification_badge.png" alt="Verified" class="verified-badge"><span class="verified-text">Verified</span></div></div>
+                <div class="testimonial-card"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><h3 class="testimonial-title">"Got my first withdrawal in 21 days"</h3><p class="testimonial-text">"Exactly as promised. First payout came in right on time. I'm reinvesting in a higher plan now!"</p><div class="testimonial-verified"><img src="../assets/images/img_instagram_verification_badge.png" alt="Verified" class="verified-badge"><span class="verified-text">Verified</span></div></div>
+            </div>
+        </div>
+
+        <!-- Trading Section -->
+        <div class="trading-section">
+            <h2 class="trading-title">Trade Smart & Win</h2>
+            <img src="../assets/gifs/candles.gif" alt="Trading Animation" class="trading-gif">
+            <h3 class="trading-subtitle">Join Funded Edge today and experience a trading community unlike any other</h3>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <div class="cta-card"><img src="../assets/images/img_1_200x200.png" alt="Customer Service" class="cta-image"><h3 class="cta-title">24 hr Customer service</h3><p class="cta-description">Funded edge provides 24/7 support.</p><button class="cta-button" id="talkToSupportCtaBtn">Talk to support</button></div>
+            <div class="cta-card"><img src="../assets/images/img_2_200x200.png" alt="Forum" class="cta-image"><h3 class="cta-title">Join a supportive Forum</h3><p class="cta-description">Our team is ready to help you with any of your trading needs.</p><button class="cta-button" id="contactUsCtaBtn">Contact us</button></div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-logo">FUNDED EDGE</div>
+            <div class="social-icons">
+                <img src="../assets/images/img_clip_path_group_48x48.svg" alt="Social" class="social-icon"><img src="../assets/images/img_clip_path_group_black_900_48x48.svg" alt="Social" class="social-icon"><img src="../assets/images/img_clip_path_group_black_900.svg" alt="Social" class="social-icon"><img src="../assets/images/img_clip_path_group.svg" alt="Social" class="social-icon">
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-links">
+                <div class="footer-column"><h4 class="footer-column-title">Markets</h4><div class="footer-column-links"><p>FundedEdge CFDs</p></div></div>
+                <div class="footer-column"><h4 class="footer-column-title">Education & Tools</h4><div class="footer-column-links"><p>Trading Guide</p><p>Blog</p></div></div>
+                <div class="footer-column"><h4 class="footer-column-title">Legal & Important</h4><div class="footer-column-links"><p>FAQ</p><p>Risk Disclosure</p><p>Terms of Service</p><p>Privacy Policy</p><p>Cookie Policy</p></div></div>
+                <div class="footer-column"><h4 class="footer-column-title">Affiliates & Events</h4><div class="footer-column-links"><p>Become an Affiliate</p></div></div>
+                <div class="footer-column"><h4 class="footer-column-title">Support</h4><div class="footer-column-links"><p>Contact Us</p><p>Live Chat</p><p>Messenger</p></div></div>
+            </div>
+        </footer>
+
+        <!-- Floating Chat Icon -->
+        <div id="floatingChatIcon" class="floating-chat-icon">
+            <img src="../assets/images/img_untitled_design_2_1.png" alt="Chat">
+        </div>
+
+
+    </div> <!-- end .container -->
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="../js/javascript.js"></script>
+<script>
+    function toggleMobileMenu() {
+        const navLinks = document.getElementById('navLinks');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        
+        navLinks.classList.toggle('active');
+        mobileToggle.classList.toggle('active');
+        mobileOverlay.classList.toggle('active');
+    }
+
+    function closeMobileMenu() {
+        const navLinks = document.getElementById('navLinks');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        
+        navLinks.classList.remove('active');
+        mobileToggle.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        
+        // Close all dropdowns
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
+
+    function toggleDropdown(element) {
+        if (window.innerWidth <= 768) {
+            element.classList.toggle('active');
+        }
+    }
+
+    function toggleTheme() {
+        // Theme toggle functionality
+        console.log('Theme toggle clicked');
+    }
+
+    // Close mobile menu when clicking on nav links
+    document.querySelectorAll('.nav-link, .cdf-button, .dropdown-item').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && !e.target.closest('.dropdown')) {
+                closeMobileMenu();
+            }
+        });
+    });
+
+    // Close mobile menu on window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            closeMobileMenu();
+        }
+    });
+</script>
+
+
+</body>
+</html>
