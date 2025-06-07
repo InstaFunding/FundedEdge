@@ -42,50 +42,50 @@
         // Proceed to the next step (e.g., show dashboard or payment configuration)
     }
     document.getElementById('loginButton').addEventListener('click', function () {
-        const loginModal = document.createElement('div');
-        loginModal.id = 'loginModal';
-        loginModal.classList.add('modal');
-        loginModal.innerHTML = `
-            <div class="modal-content">
-                <span class="close-button" data-modal-id="loginModal">&times;</span>
-                <h2>Login</h2>
-                <form id="loginForm">
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; margin-bottom: 5px;">Email</label>
-                        <input type="email" name="email" required>
-                    </div>
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; margin-bottom: 5px;">Password</label>
-                        <input type="password" name="password" required>
-                    </div>
-                    <button type="submit">Log In</button>
-                </form>
-                <p style="margin-top: 15px; text-align: center;">Don't have an account? <button id="signupRedirectBtn" style="background: none; border: none; color: #007bff; text-decoration: underline; cursor: pointer;">Sign Up</button></p>
-            </div>`;
-        document.body.appendChild(loginModal);
-        loginModal.style.display = 'block';
-    
-        // Close modal functionality
-        loginModal.querySelector('.close-button').addEventListener('click', function () {
-            loginModal.style.display = 'none';
-            loginModal.remove();
-        });
-    
-        // Handle form submission
-        loginModal.querySelector('#loginForm').addEventListener('submit', handleLoginSubmit);
-    
-        // Redirect to plans section on "Sign Up" button click
-        loginModal.querySelector('#signupRedirectBtn').addEventListener('click', function () {
-            loginModal.style.display = 'none';
-            loginModal.remove();
-            const plansSection = document.querySelector('.plans-section');
-            if (plansSection) {
-                plansSection.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                alert('Plans section not found!');
-            }
-        });
+    const loginModal = document.createElement('div');
+    loginModal.id = 'loginModal';
+    loginModal.classList.add('modal');
+    loginModal.innerHTML = `
+        <div class="modal-content">
+            <span class="close-button" data-modal-id="loginModal">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px;">Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px;">Password</label>
+                    <input type="password" name="password" required>
+                </div>
+                <button type="submit">Log In</button>
+            </form>
+            <p style="margin-top: 15px; text-align: center;">Don't have an account? <button id="signupRedirectBtn" style="background: none; border: none; color: #007bff; text-decoration: underline; cursor: pointer;">Sign Up</button></p>
+        </div>`;
+    document.body.appendChild(loginModal);
+    loginModal.style.display = 'block';
+
+    // Close modal functionality
+    loginModal.querySelector('.close-button').addEventListener('click', function () {
+        loginModal.style.display = 'none';
+        loginModal.remove();
     });
+
+    // Handle form submission
+    loginModal.querySelector('#loginForm').addEventListener('submit', handleLoginSubmit);
+
+    // Redirect to plans section on "Sign Up" button click
+    loginModal.querySelector('#signupRedirectBtn').addEventListener('click', function () {
+        loginModal.style.display = 'none';
+        loginModal.remove();
+        const plansSection = document.querySelector('.plans-section');
+        if (plansSection) {
+            plansSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            alert('Plans section not found!');
+        }
+    });
+});
 
     function validateFile(file) {
         const allowedTypes = ['image/png', 'image/jpeg', 'application/pdf'];
