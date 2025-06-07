@@ -297,7 +297,7 @@ function showCustomPaymentForm() {
                     <button class="tab-button" data-method="mobile">Mobile Money</button>
                 </div>
             </div>
-            <div id="card-payment" class="payment-form active">
+           <div id="card-payment" class="payment-form active">
     <div class="blur-banner">Coming Soon</div>
     <form id="cardPaymentForm">
         <div class="form-row">
@@ -332,7 +332,7 @@ function showCustomPaymentForm() {
         <button type="submit" class="pay-button">Pay $${currentPlanData.finalPrice.toFixed(2)}</button>
     </form>
 </div>
-           <div id="crypto-payment" class="payment-form">
+            <div id="crypto-payment" class="payment-form">
     <div class="crypto-options">
         <h4>Select Cryptocurrency</h4>
         <div class="crypto-buttons">
