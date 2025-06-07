@@ -16,11 +16,31 @@
     });
     }
     
-    const savedCredentials = JSON.parse(localStorage.getItem('userCredentials'));
-if (savedCredentials) {
-    console.log('User is already logged in:', savedCredentials.email);
-}
-
+    function handleLoginSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const loginData = Object.fromEntries(formData.entries());
+    
+        // Retrieve all users from localStorage
+        const allUsers = JSON.parse(localStorage.getItem('fundedEdgeUsers') || '[]');
+        const existingUser = allUsers.find(user => user.email === loginData.email);
+    
+        if (!existingUser) {
+            alert('No account found with this email. Please sign up.');
+            return;
+        }
+    
+        // Hash the entered password and compare with stored hash
+        const hashedPassword = CryptoJS.SHA256(loginData.password).toString();
+        if (existingUser.password !== hashedPassword) {
+            alert('Incorrect password. Please try again.');
+            return;
+        }
+    
+        alert('Login successful!');
+        closeModal('loginModal');
+        // Proceed to the next step (e.g., show dashboard or payment configuration)
+    }
     document.getElementById('loginButton').addEventListener('click', function () {
         const loginModal = document.createElement('div');
         loginModal.id = 'loginModal';
@@ -28,7 +48,7 @@ if (savedCredentials) {
         loginModal.innerHTML = `
             <div class="modal-content">
                 <span class="close-button" data-modal-id="loginModal">&times;</span>
-                <h2>Login / Sign Up</h2>
+                <h2>Login</h2>
                 <form id="loginForm">
                     <div style="margin-bottom: 15px;">
                         <label style="display: block; margin-bottom: 5px;">Email</label>
@@ -38,8 +58,9 @@ if (savedCredentials) {
                         <label style="display: block; margin-bottom: 5px;">Password</label>
                         <input type="password" name="password" required>
                     </div>
-                    <button type="submit">Sign Up / Login</button>
+                    <button type="submit">Log In</button>
                 </form>
+                <p style="margin-top: 15px; text-align: center;">Don't have an account? <button id="signupRedirectBtn" style="background: none; border: none; color: #007bff; text-decoration: underline; cursor: pointer;">Sign Up</button></p>
             </div>`;
         document.body.appendChild(loginModal);
         loginModal.style.display = 'block';
@@ -51,16 +72,18 @@ if (savedCredentials) {
         });
     
         // Handle form submission
-        loginModal.querySelector('#loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            const userData = Object.fromEntries(formData.entries());
+        loginModal.querySelector('#loginForm').addEventListener('submit', handleLoginSubmit);
     
-            // Save user credentials locally
-            document.cookie = `sessionToken=${token}; Secure; HttpOnly; SameSite=Strict`;
-            alert('You have successfully signed up / logged in!');
+        // Redirect to plans section on "Sign Up" button click
+        loginModal.querySelector('#signupRedirectBtn').addEventListener('click', function () {
             loginModal.style.display = 'none';
             loginModal.remove();
+            const plansSection = document.querySelector('.plans-section');
+            if (plansSection) {
+                plansSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert('Plans section not found!');
+            }
         });
     });
 
@@ -178,10 +201,28 @@ if (savedCredentials) {
 
 function handleSignupSubmit(e) {
     e.preventDefault();
-    const formData = new FormData(this);
-    currentPlanData.user = Object.fromEntries(formData.entries());
+    const formData = new FormData(e.target);
+    const userData = Object.fromEntries(formData.entries());
+
+    // Check if the email is already registered
+    const allUsers = JSON.parse(localStorage.getItem('fundedEdgeUsers') || '[]');
+    const existingUser = allUsers.find(user => user.email === userData.email);
+
+    if (existingUser) {
+        alert('This email is already registered. Please log in.');
+        return;
+    }
+
+    // Hash the password before storing
+    userData.password = CryptoJS.SHA256(userData.password).toString();
+
+    // Save user data
+    allUsers.push(userData);
+    localStorage.setItem('fundedEdgeUsers', JSON.stringify(allUsers));
+
+    alert('Signup successful! You can now log in.');
     closeModal('signupModal');
-    showPaymentConfigForm(); // Call payment configuration form
+    showPaymentConfigForm(); // Proceed to payment configuration
 }
 
             let configFormData = new FormData(); // Initialize configFormData
