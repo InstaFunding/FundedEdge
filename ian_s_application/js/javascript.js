@@ -207,33 +207,76 @@ if (configFormData.get('addon_doubleup')) currentPlanData.finalPrice += currentP
 }
 
 function showPaymentConfigForm() {
-                closeAllModals();
-                const paymentModal = document.createElement('div');
-                paymentModal.id = 'paymentConfigModal';
-                paymentModal.classList.add('modal', 'payment-config-modal');
-                paymentModal.innerHTML = `
-                    <div class="modal-content">
-                        <span class="close-button" data-modal-id="paymentConfigModal">&times;</span>
-                        <h2 class="modal-title">Configure Your Plan: <span id="selectedPlanName">${currentPlanData.name}</span></h2>
-                        <div class="plan-details-summary">Capital: <span id="selectedPlanCapital">${currentPlanData.capital}</span> | Base Price: $<span id="selectedPlanBasePrice">${currentPlanData.basePrice.toFixed(2)}</span></div>
-                        <form id="paymentConfigFormInternal">
-                            <div class="form-group"><label>Select Platform:</label><div class="radio-group"><input type="radio" id="mt4" name="platform" value="MT4" checked><label for="mt4">MT4</label><input type="radio" id="mt5" name="platform" value="MT5"><label for="mt5">MT5</label></div></div>
-                            <div class="form-group"><label>Select Swap Type:</label><div class="radio-group"><input type="radio" id="swap" name="swapType" value="swap" data-price-modifier="0" checked><label for="swap">Swap</label><input type="radio" id="swap-free" name="swapType" value="swap-free" data-price-modifier="0.10"><label for="swap-free">Swap-Free (Price +10%)</label></div></div>
-                            <div class="form-group"><label>Select Add-on(s):</label><div class="checkbox-group"><div><input type="checkbox" id="addon-payout" name="addon_payout" value="payout" data-price-modifier="0.30"><label for="addon-payout">Lifetime Payout 95% (Price +30%)</label></div><div><input type="checkbox" id="addon-reward" name="addon_reward" value="reward" data-price-modifier="0.10"><label for="addon-reward">150% Reward (Price +10%)</label></div><div><input type="checkbox" id="addon-doubleup" name="addon_doubleup" value="doubleup" data-price-modifier="0.40"><label for="addon-doubleup">Double Up (Price +40%)</label></div></div></div>
-                            <div class="form-group terms-group"><input type="checkbox" id="agreeTerms" name="agreeTerms" required><label for="agreeTerms">I agree to the <a href="#" target="_blank">Terms of Service</a> & <a href="#" target="_blank">Challenge Terms</a>.</label></div>
-                            <div class="payable-amount">Payable Amount: $<span id="totalPayableAmountText">${currentPlanData.basePrice.toFixed(2)}</span></div>
-                            <button type="submit" id="proceedToPaymentBtnInternal" class="cta-button" disabled>Proceed to Payment</button>
-                        </form>
-                    </div>`;
-                document.body.appendChild(paymentModal);
-                paymentModal.style.display = 'block';
-                const form = paymentModal.querySelector('#paymentConfigFormInternal');
-                form.querySelectorAll('input[name="swapType"], input[name^="addon_"], #agreeTerms').forEach(input => {
-                    input.addEventListener('change', () => calculateAndUpdatePrice(form));
-                });
-                calculateAndUpdatePrice(form); 
-                form.addEventListener('submit', handlePaymentConfigSubmit);
-            }
+    closeAllModals();
+    const paymentModal = document.createElement('div');
+    paymentModal.id = 'paymentConfigModal';
+    paymentModal.classList.add('modal', 'payment-config-modal');
+    paymentModal.innerHTML = `
+        <div class="modal-content">
+            <span class="close-button" data-modal-id="paymentConfigModal">&times;</span>
+            <h2 class="modal-title">Configure Your Plan: <span id="selectedPlanName">${currentPlanData.name}</span></h2>
+            <div class="plan-details-summary">Capital: <span id="selectedPlanCapital">${currentPlanData.capital}</span> | Base Price: $<span id="selectedPlanBasePrice">${currentPlanData.basePrice.toFixed(2)}</span></div>
+            <form id="paymentConfigFormInternal">
+                <div class="form-group">
+                    <label>Select Platform:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="mt4" name="platform" value="MT4" checked>
+                        <label for="mt4">MT4</label>
+                        <input type="radio" id="mt5" name="platform" value="MT5">
+                        <label for="mt5">MT5</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Select Swap Type:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="swap" name="swapType" value="swap" data-price-modifier="0" checked>
+                        <label for="swap">Swap</label>
+                        <input type="radio" id="swap-free" name="swapType" value="swap-free" data-price-modifier="0.10">
+                        <label for="swap-free">Swap-Free (Price +10%)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Select Add-on(s):</label>
+                    <div class="checkbox-group">
+                        <div>
+                            <input type="checkbox" id="addon-payout" name="addon_payout" value="payout" data-price-modifier="0.30">
+                            <label for="addon-payout">Lifetime Payout 95% (Price +30%)</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="addon-reward" name="addon_reward" value="reward" data-price-modifier="0.10">
+                            <label for="addon-reward">150% Reward (Price +10%)</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="addon-doubleup" name="addon_doubleup" value="doubleup" data-price-modifier="0.40">
+                            <label for="addon-doubleup">Double Up (Price +40%)</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="addon-bot" name="addon_bot" value="bot" data-price-modifier="0.10">
+                            <label for="addon-bot">Bot Trading (Price +10%)</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="addon-expert" name="addon_expert" value="expert" data-price-modifier="0.15">
+                            <label for="addon-expert">Expert Advisors (Price +15%)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group terms-group">
+                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                    <label for="agreeTerms">I agree to the <a href="#" target="_blank">Terms of Service</a> & <a href="#" target="_blank">Challenge Terms</a>.</label>
+                </div>
+                <div class="payable-amount">Payable Amount: $<span id="totalPayableAmountText">${currentPlanData.basePrice.toFixed(2)}</span></div>
+                <button type="submit" id="proceedToPaymentBtnInternal" class="cta-button" disabled>Proceed to Payment</button>
+            </form>
+        </div>`;
+    document.body.appendChild(paymentModal);
+    paymentModal.style.display = 'block';
+    const form = paymentModal.querySelector('#paymentConfigFormInternal');
+    form.querySelectorAll('input[name="swapType"], input[name^="addon_"], #agreeTerms').forEach(input => {
+        input.addEventListener('change', () => calculateAndUpdatePrice(form));
+    });
+    calculateAndUpdatePrice(form);
+    form.addEventListener('submit', handlePaymentConfigSubmit);
+}
 
             function calculateAndUpdatePrice(formElement) {
                 let finalPrice = currentPlanData.basePrice;

@@ -424,8 +424,22 @@
                 height: 20px;
             }
         }
+        /* Align checkbox and label horizontally */
+.form-group.terms-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Add spacing between checkbox and text */
+}
+
+.form-group.terms-group input[type="checkbox"] {
+    margin: 0; /* Remove default margin */
+}
 
         @media screen and (max-width: 768px) {
+            .top-banner {
+                display: none;
+            }
+        
             .top-banner {
                 min-height: 60px;
                 padding: 10px 0;
