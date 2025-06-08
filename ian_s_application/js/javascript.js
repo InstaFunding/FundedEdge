@@ -789,6 +789,19 @@ if (!validateFile(fileInput.files[0])) {
 function handlePaymentSuccess(result) {
     hideProcessing();
     closeModal('customPaymentModal');
+
+    // Define verification times for each plan
+    const verificationTimes = {
+        Boost: '14 Days',
+        Prime: '10 Days',
+        Advanced: '7 Days',
+        Elite: '72 Hours',
+        Pro: '48 Hours',
+        Ultimate: '24 Hours',
+        Executive: 'Instant',
+        'Millionaire+': 'Instant'
+    };
+
     const completedPayment = {
         name: currentPlanData.name,
         capital: currentPlanData.capital,
@@ -797,6 +810,7 @@ function handlePaymentSuccess(result) {
         paymentMethod: result.method || 'Credit Card',
         userEmail: currentPlanData.user.email,
         userName: currentPlanData.user.fullName,
+        verificationTime: verificationTimes[currentPlanData.name] || 'Unknown', // Add verification time
         applicationTimestamp: new Date().toISOString(),
         paymentStatus: 'Completed'
     };
