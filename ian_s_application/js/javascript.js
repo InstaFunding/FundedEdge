@@ -1019,6 +1019,34 @@ function showSuccessModal(paymentData) {
         </div>`;
     document.body.appendChild(contactFormModal);
     contactFormModal.style.display = 'block';
+    document.addEventListener('DOMContentLoaded', function () {
+        const footerContactUs = document.getElementById('footerContactUs');
+        const footerLiveChat = document.getElementById('footerLiveChat');
+        const footerMessenger = document.getElementById('footerMessenger');
+    
+        // Open live chat for "Contact Us" and "Live Chat"
+        if (footerContactUs) {
+            footerContactUs.addEventListener('click', function (e) {
+                e.preventDefault();
+                openChat(); // Replace with your live chat function
+            });
+        }
+    
+        if (footerLiveChat) {
+            footerLiveChat.addEventListener('click', function (e) {
+                e.preventDefault();
+                openChat(); // Replace with your live chat function
+            });
+        }
+    
+        // Redirect to Messenger
+        if (footerMessenger) {
+            footerMessenger.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.open('https://m.me/FundedEdge', '_blank'); // Replace with your Messenger link
+            });
+        }
+    });
 
     // Close modal functionality
     contactFormModal.querySelector('.close-button').addEventListener('click', function () {
