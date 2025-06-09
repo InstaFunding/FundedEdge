@@ -38,7 +38,7 @@ function closeModal(modalId) {
         alert('Login successful!');
         closeModal('loginModal');
         // Proceed to the next step (e.g., show dashboard or payment configuration)
-        window.location.href = "ian_s_application/pages/funded-edge.html";
+        window.location.href = "funded-edge.html";
     }
     document.getElementById('loginButton').addEventListener('click', function () {
     const loginModal = document.createElement('div');
