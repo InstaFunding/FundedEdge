@@ -1,6 +1,4 @@
- 
-
-        function closeModal(modalId) {
+function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.style.display = 'none';
@@ -40,6 +38,7 @@
         alert('Login successful!');
         closeModal('loginModal');
         // Proceed to the next step (e.g., show dashboard or payment configuration)
+        window.location.href = "ian_s_application/pages/funded-edge.html";
     }
     document.getElementById('loginButton').addEventListener('click', function () {
     const loginModal = document.createElement('div');
@@ -1064,4 +1063,3 @@ function showSuccessModal(paymentData) {
     });
 }) });
 
-    
